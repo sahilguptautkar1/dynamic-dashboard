@@ -1,3 +1,44 @@
+# Dynamic-Dashboard (CNAPP Dashboard)
+
+## Deployed Link
+https://dynamic-dashboard-assignment.netlify.app/
+
+## Overview:
+The CNAPP Dashboard is a React-based application designed to provide a user-friendly interface for managing and monitoring various categories of widgets. Each category, such as CSPM, CWPP, and Registry Scan, has its own set of widgets displayed as interactive charts, offering insights into different data points.
+
+## Project Objectives:
+- ### Data Visualization: 
+    To enable users to visualize data in a concise and easy-to-understand format using different types of charts (Doughnut, Bar, Line).
+- ### Dynamic Widget Management: 
+    Allow users to add, remove, and filter widgets dynamically within each category.
+- ### Search and Filter Functionality: 
+    Implement a search bar to quickly locate specific widgets and a filtering mechanism, within a side dialog, to personalize the dashboard view.
+- ### Responsive Design: 
+    Ensure that the dashboard is fully responsive and works across various devices and screen sizes.
+
+## Key Features:
+- ### Multi-Category Support:
+    - The dashboard supports multiple categories (CSPM, CWPP, Registry Scan) with unique widgets for each, that are displayed as charts and can be managed independently.
+
+- ### Widget Management:
+    - ##### Add Widgets - 
+        Users can add new widgets to each category via a user-friendly interface.
+    - ##### Remove Widgets - 
+       Existing widgets can be easily removed, allowing for dynamic dashboard customization.
+- ### Search Functionality:
+    - A search bar allows users to find widgets based on their names quickly.
+    - The search input automatically clears when clicking the "Filter Widgets" button to ensure the most relevant widgets are displayed.
+- ### Responsive UI:
+    - The dashboard is designed with responsiveness in mind, ensuring it looks good and functions well on all screen sizes.
+- ### Optimized Performance:
+    - The code is optimized for better performance by reducing redundant CSS and simplifying the component structure.
+
+## Technology Stack:
+    - Front-End: React.js, Material-UI
+    - State Management: Redux
+    - Charting Library: Chart.js
+    - Version Control: Git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
