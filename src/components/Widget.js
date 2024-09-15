@@ -112,6 +112,14 @@ const Widget = ({ title, parts, onRemove, categoryId }) => {
     },
     maintainAspectRatio: false,
   }
+  const handleDelete = () => {
+    const confirmation = window.confirm(
+      'Are you sure you want to delete this widget?'
+    )
+    if (confirmation) {
+      onRemove() // Call the delete function if the user confirms
+    }
+  }
 
   const renderChart = () => {
     if (categoryId === 'cspm_dashboard') {
@@ -244,7 +252,7 @@ const Widget = ({ title, parts, onRemove, categoryId }) => {
           {title}
         </Typography>
 
-        <IconButton onClick={onRemove}>
+        <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       </Box>
