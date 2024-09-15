@@ -1,70 +1,87 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Grid, Typography, IconButton, Box, Paper } from '@mui/material';
-import Widget from './Widget';
-import WidgetDialog from './WidgetDialog';
-import SideDialog from './SideDialog';
-import Header from './Header';
-import { addWidget, removeWidget } from '../redux/actions';
-import { Add, FilterList } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Grid, Typography, IconButton, Box, Paper } from '@mui/material'
+import Widget from './Widget'
+import WidgetDialog from './WidgetDialog'
+import SideDialog from './SideDialog'
+import Header from './Header'
+import { addWidget, removeWidget } from '../redux/actions'
+import { Add, FilterList } from '@mui/icons-material'
 
 const Dashboard = () => {
-  const categories = useSelector((state) => state.categories);
-  const dispatch = useDispatch();
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [sideDialogOpen, setSideDialogOpen] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState(null);
-  const [filteredWidgets, setFilteredWidgets] = useState({});
-  const [searchQuery, setSearchQuery] = useState('');
+  const categories = useSelector((state) => state.categories)
+  const dispatch = useDispatch()
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [sideDialogOpen, setSideDialogOpen] = useState(false)
+  const [currentCategory, setCurrentCategory] = useState(null)
+  const [filteredWidgets, setFilteredWidgets] = useState({})
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleAddWidget = (widget) => {
-    dispatch(addWidget(currentCategory, widget));
+    dispatch(addWidget(currentCategory, widget))
 
     // Immediately update the filteredWidgets state
-    setFilteredWidgets(prevState => ({
+    setFilteredWidgets((prevState) => ({
       ...prevState,
       [currentCategory]: [
-        ...(prevState[currentCategory] || categories.find(cat => cat.id === currentCategory).widgets),
-        widget
-      ]
-    }));
+        ...(prevState[currentCategory] ||
+          categories.find((cat) => cat.id === currentCategory).widgets),
+        widget,
+      ],
+    }))
 
-    setDialogOpen(false);
-  };
+    setDialogOpen(false)
+  }
 
   const handleRemoveWidget = (categoryID, widgetID) => {
-    dispatch(removeWidget(categoryID, widgetID));
-  };
+    dispatch(removeWidget(categoryID, widgetID))
+
+    setFilteredWidgets((prevState) => ({
+      ...prevState,
+      [categoryID]: [
+        ...(prevState[categoryID] ||
+          categories.find(((cat) => cat.id === categoryID).widgets)),
+      ],
+    }))
+  }
+
+  useEffect(() => {
+    const initialWidgets = {}
+    categories.forEach((category) => {
+      initialWidgets[category.id] = category.widgets
+    })
+    setFilteredWidgets(initialWidgets) // Sync local state with Redux
+  }, [categories])
 
   const handleSideDialogSubmit = (widgetsToKeep) => {
-    setFilteredWidgets(widgetsToKeep);
-    setSideDialogOpen(false);
-  };
+    setFilteredWidgets(widgetsToKeep)
+    setSideDialogOpen(false)
+  }
 
   const handleSearch = (query) => {
-    setSearchQuery(query.toLowerCase());
-  };
+    setSearchQuery(query.toLowerCase())
+  }
 
   const handleFilterClick = () => {
-    setSearchQuery(''); // Clear the search query when the filter button is clicked
-    setSideDialogOpen(true);
-  };
+    setSearchQuery('') // Clear the search query when the filter button is clicked
+    setSideDialogOpen(true)
+  }
 
   // Apply search and filter together
   const getFilteredCategories = () => {
     return categories.map((category) => {
-      const widgetsToFilter = filteredWidgets[category.id] || category.widgets;
+      const widgetsToFilter = filteredWidgets[category.id] || category.widgets
       const searchedWidgets = widgetsToFilter.filter((widget) =>
         widget.name.toLowerCase().includes(searchQuery)
-      );
+      )
       return {
         ...category,
         widgets: searchedWidgets,
-      };
-    });
-  };
+      }
+    })
+  }
 
-  const filteredCategories = getFilteredCategories();
+  const filteredCategories = getFilteredCategories()
 
   return (
     <Box sx={{ p: 2 }}>
@@ -105,7 +122,7 @@ const Dashboard = () => {
           </Box>
         </IconButton>
       </Box>
-      <Grid container spacing={2} paddingLeft={2} paddingRight={2}>
+      <Grid container spacing={3} px={2}>
         {filteredCategories.map((category) => (
           <Grid item xs={12} key={category.id}>
             <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
@@ -117,9 +134,7 @@ const Dashboard = () => {
                   <Widget
                     title={widget.name}
                     parts={widget.parts}
-                    onRemove={() =>
-                      handleRemoveWidget(category.id, widget.id)
-                    }
+                    onRemove={() => handleRemoveWidget(category.id, widget.id)}
                     categoryId={category.id}
                   />
                 </Grid>
@@ -138,7 +153,7 @@ const Dashboard = () => {
                     boxSizing: 'border-box',
                     width: '100%',
                     maxWidth: '350px',
-                    height: '232px',
+                    height: '230px',
                     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
                     borderRadius: '10px',
                     border: '1px solid #ccc',
@@ -150,8 +165,8 @@ const Dashboard = () => {
                     cursor: 'pointer',
                   }}
                   onClick={() => {
-                    setCurrentCategory(category.id);
-                    setDialogOpen(true);
+                    setCurrentCategory(category.id)
+                    setDialogOpen(true)
                   }}
                 >
                   <Add fontSize="small" />
@@ -178,7 +193,7 @@ const Dashboard = () => {
         initialCheckedWidgets={filteredWidgets}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

@@ -157,7 +157,6 @@ const SideDialog = ({
                       onClick={() =>
                         handleCheckboxChange(selectedCategory, widget.id)
                       }
-                      sx={{ paddingLeft: 0 }}
                     >
                       <Checkbox
                         checked={

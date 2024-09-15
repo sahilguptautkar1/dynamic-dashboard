@@ -159,11 +159,9 @@ const Widget = ({ title, parts, onRemove, categoryId }) => {
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              width: '100%',
-              height: '100%',
             }}
           >
-            <Box sx={{ display: 'flex', height: '50%' }}>
+            <Box sx={{ display: 'flex' }}>
               {categoryId === 'registry_scan' ? (
                 <Line data={data} options={options} />
               ) : (
@@ -174,7 +172,6 @@ const Widget = ({ title, parts, onRemove, categoryId }) => {
               sx={{
                 overflow: 'hidden',
                 justifyContent: 'center',
-                height: '10%',
                 display: 'flex',
               }}
             >

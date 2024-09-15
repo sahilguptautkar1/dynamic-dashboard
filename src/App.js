@@ -44,7 +44,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
       <Dashboard
         categories={categories}
         dashboardWidgets={dashboardWidgets}
@@ -63,7 +63,7 @@ const App = () => {
           initialCheckedWidgets={dashboardWidgets}
         />
       )}
-    </div>
+    </>
   )
 }
 
