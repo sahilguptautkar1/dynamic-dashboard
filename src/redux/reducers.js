@@ -1,6 +1,6 @@
 //Reducer.js
 import { ADD_WIDGET, REMOVE_WIDGET } from './actions'
-import data from '../data.json'
+import data from '../data/data.json'
 
 const initialState = data
 

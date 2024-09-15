@@ -16,10 +16,9 @@ const SideDialog = ({
   onClose,
   onSubmit,
   categories,
-  initialCategory,
   initialCheckedWidgets,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]?.id)
   const [selectedWidgets, setSelectedWidgets] = useState({})
 
   useEffect(() => {
@@ -35,8 +34,6 @@ const SideDialog = ({
         })
       })
       setSelectedWidgets(initialSelection)
-
-      setSelectedCategory('cspm_dashboard')
     }
   }, [categories, initialCheckedWidgets, open])
 
@@ -71,7 +68,7 @@ const SideDialog = ({
 
   return (
     <Drawer anchor="right" open={open} onClose={onClose}>
-      <Box sx={{ width: 475, height: '88vh' }}>
+      <Box sx={{ width: 460, height: '88vh' }}>
         <Box
           sx={{
             display: 'flex',
@@ -114,8 +111,6 @@ const SideDialog = ({
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                px: 0,
-                gap: 1,
                 justifyContent: 'center',
                 borderBottom: '2px solid #ccc',
                 position: 'relative',
@@ -142,7 +137,8 @@ const SideDialog = ({
                       borderBottom: '2px solid',
                       borderColor: 'primary.main',
                     },
-                    marginBottom: '-1.5px',
+                    position: 'relative',
+                    top: '1.5px',
                   }}
                 >
                   {category.name}
