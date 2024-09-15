@@ -5,8 +5,8 @@ import SearchIcon from '@mui/icons-material/Search'
 const Header = ({ onSearch, searchQuery }) => {
   return (
     <AppBar position="fixed">
-      <Toolbar>
-        <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+      <Toolbar sx={{ gap: 1 }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
           Dashboard
         </Typography>
         <Box
@@ -22,14 +22,12 @@ const Header = ({ onSearch, searchQuery }) => {
           <SearchIcon />
           <InputBase
             placeholder="Search Widgets…"
-            value={searchQuery} 
+            value={searchQuery}
             onChange={(e) => onSearch(e.target.value)}
             sx={{
               color: 'white',
               '& .MuiInputBase-input': {
                 padding: '8px',
-                paddingLeft: '18px',
-                width: '250px',
                 transition: 'width 0.4s',
               },
             }}

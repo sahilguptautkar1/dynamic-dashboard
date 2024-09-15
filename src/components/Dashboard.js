@@ -95,6 +95,7 @@ const Dashboard = () => {
           justifyContent: 'space-between',
           mt: 7,
           mb: 2,
+          gap: 1,
         }}
       >
         <Typography variant="h5" sx={{ fontWeight: 'bold' }}>

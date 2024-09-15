@@ -68,7 +68,7 @@ const SideDialog = ({
 
   return (
     <Drawer anchor="right" open={open} onClose={onClose}>
-      <Box sx={{ width: 460, height: '88vh' }}>
+      <Box sx={{ maxWidth: 420, height: '88vh' }}>
         <Box
           sx={{
             display: 'flex',
@@ -125,7 +125,7 @@ const SideDialog = ({
                   sx={{
                     textTransform: 'none',
                     borderRadius: 0,
-                    fontSize: 16,
+                    fontSize: 14,
                     borderBottom:
                       selectedCategory === category.id ? '2px solid' : 'none',
                     borderColor:
