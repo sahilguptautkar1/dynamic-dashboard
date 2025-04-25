@@ -1,0 +1,130 @@
+{
+  "categories": [
+    {
+      "id": "cspm_dashboard",
+      "name": "CSPM Dashboard",
+      "widgets": [
+        {
+          "id": "widget1",
+          "name": "Cloud Accounts",
+          "parts": [
+            {
+              "label": "Connected",
+              "value": 50
+            },
+            {
+              "label": "Not Connected",
+              "value": 32
+            }
+          ]
+        },
+        {
+          "id": "widget2",
+          "name": "Cloud Account Risk Assessment",
+          "parts": [
+            {
+              "label": "Failed",
+              "value": 168
+            },
+            {
+              "label": "Warning",
+              "value": 681
+            },
+            {
+              "label": "Not available",
+              "value": 560
+            },
+            {
+              "label": "Passed",
+              "value": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cwpp_dashboard",
+      "name": "CWPP Dashboard",
+      "widgets": [
+        {
+          "id": "widget3",
+          "name": "Top 5 Namespace Specific Alerts",
+          "parts": [
+            {
+              "label": "Scalability",
+              "value": "43"
+            },
+            {
+              "label": "Visibility",
+              "value": "32"
+            },
+            {
+              "label": "Security",
+              "value": "51"
+            },
+            {
+              "label": "Adversity",
+              "value": "43"
+            },
+            {
+              "label": "Credibility",
+              "value": "32"
+            }
+          ]
+        },
+        {
+          "id": "widget4",
+          "name": "Workload Alerts",
+          "parts": [
+            {
+              "label": "Security",
+              "value": 17
+            },
+            {
+              "label": "Critical",
+              "value": 11
+            },
+            {
+              "label": "High",
+              "value": 26
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "registry_scan",
+      "name": "Registry Scan",
+      "widgets": [
+        {
+          "id": "widget5",
+          "name": "Image Risk Assessment",
+          "parts": [
+            {
+              "label": "Net Liabilities",
+              "value": 3000
+            },
+            {
+              "label": "Critical",
+              "value": 1130
+            },
+            {
+              "label": "High",
+              "value": 1870
+            }
+          ]
+        },
+        {
+          "id": "widget6",
+          "name": "Image Security Issues",
+          "parts": [
+            {
+              "label": "Authentication",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
